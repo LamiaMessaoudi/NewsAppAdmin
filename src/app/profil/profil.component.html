@@ -1,0 +1,106 @@
+<app-header></app-header>
+
+
+  
+    
+<div class="d-flex align-items-stretch">
+    <div id="sidebar" class="sidebar py-3">
+      <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
+      <ul class="sidebar-menu list-unstyled">
+            <li class="sidebar-list-item"><a routerLink="/accueil" class="sidebar-link text-muted"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+            <li class="sidebar-list-item"><a routerLink="/Profil" class="sidebar-link text-muted"><i class="fas fa-user-alt mr-3 text-gray"></i><span>Profile</span></a></li>
+            <li class="sidebar-list-item"><a  data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Posts</span></a>
+          <div id="pages" class="collapse">
+            <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+              <li class="sidebar-list-item"><a routerLink="/ListPosts"class="sidebar-link text-muted pl-lg-5"> <i class="fab fa-readme mr-3 text-gray"></i>View Posts</a></li>
+              <li class="sidebar-list-item"><a routerLink="/Post/add" class="sidebar-link text-muted pl-lg-5"> <i class="fas fa-plus-circle mr-3 text-gray"></i>Add Post</a></li>
+             </ul>
+          </div>
+        </li>
+        <li class="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#page" aria-expanded="false" aria-controls="pages" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Categories</span></a>
+          <div id="page" class="collapse">
+            <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+              <li class="sidebar-list-item"><a routerLink="/ListCategorie" class="sidebar-link text-muted pl-lg-5"> <i class="fab fa-readme mr-3 text-gray"></i>View Categories</a></li>
+              <li class="sidebar-list-item"><a routerLink="/Category/add" class="sidebar-link text-muted pl-lg-5"><i class="fas fa-plus-circle mr-3 text-gray"></i>Add Category</a></li>
+             </ul>
+          </div>
+        </li>
+        <li class="sidebar-list-item"><a  routerLink="/Statistical" class="sidebar-link text-muted"> <i class="fas fa-chart-pie mr-3 text-gray"></i><span> Statistical </span></a></li>
+            <li class="sidebar-list-item"><a  routerLink="/auth/signin" class="sidebar-link text-muted"> <i class="fas fa-sign-in-alt mr-3 text-gray"></i><span> Log out </span></a></li>
+          
+    </ul>
+        
+           
+      </div>
+      <div class="page-holder w-100 d-flex flex-wrap">
+        <div class="container-fluid px-xl-5">
+          <section class="py-5">
+            <div class="row">
+              <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-violet"></div>
+                    <div class="text">
+                      <h6 class="mb-0">Data consumed</h6><span class="text-gray">145,14 GB</span>
+                    </div>
+                  </div>
+                  <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-green"></div>
+                    <div class="text">
+                      <h6 class="mb-0">Open cases</h6><span class="text-gray">32</span>
+                    </div>
+                  </div>
+                  <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-blue"></div>
+                    <div class="text">
+                      <h6 class="mb-0">Work orders</h6><span class="text-gray">400</span>
+                    </div>
+                  </div>
+                  <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-red"></div>
+                    <div class="text">
+                      <h6 class="mb-0">New invoices</h6><span class="text-gray">123</span>
+                    </div>
+                  </div>
+                  <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
+                </div>
+              </div>
+            </div>
+           
+          </section>
+    
+        </div>
+        
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">Your company &copy; 2018-2020</p>
+              </div>
+              <div class="col-md-6 text-center text-md-right text-gray-400">
+                <p class="mb-0">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400">Bootstrapious</a></p>
+                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+              </div>
+            </div>
+          </div>
+        </footer>
+       </div>
+      
+    </div>
+   
+ 
