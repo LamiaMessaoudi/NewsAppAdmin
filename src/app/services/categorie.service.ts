@@ -10,7 +10,8 @@ import { map } from '../../../node_modules/rxjs/operators';
 export class CategorieService {
   private listCategories:Categorie[]=[];
   public CategoriesSubjet=new Subject<Categorie[]>();
-  
+  private categorie:Categorie;
+  public CategorieSubjet=new Subject<Categorie>();
   constructor( private httpClient:HttpClient) { 
     this.getAllCategories();
   }
@@ -54,6 +55,7 @@ deleteCategorie(idCategorie:String)
       this.getAllCategories();
   }));
 }
+
 updateCategorie(categorie:Categorie,idCategorie:String)
 {
   return this.httpClient.put('http://localhost:9999/updateCategorie/'+idCategorie,categorie)

@@ -118,6 +118,16 @@
           </div>
           <div class="line"></div>
           <div class="form-group row">
+            <label class="col-md-3 form-control-label">Categorie</label>
+            <div class="col-md-9">
+              <select  class="form-control" (change)="SelectIdCategorie($event.target.value)">
+              
+                <option [value]="categorie.idCategorie" *ngFor="let categorie of categories">{{categorie.titleCategorie}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="form-group row">
             <label class="col-md-3 form-control-label">Picture</label>
             <div class="col-md-9">
               <input type="file"  class="form-control">

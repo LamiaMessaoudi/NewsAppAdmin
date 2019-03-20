@@ -6,24 +6,32 @@ import { PostService } from '../../services/post.service';
 import { first } from '../../../../node_modules/rxjs/operators';
 import { Post } from '../../Models/Post';
 import { DatePipe } from '../../../../node_modules/@angular/common';
+import { CategorieService } from '../../services/categorie.service';
+import { Categorie } from '../../Models/Categorie';
+import { Subscription } from '../../../../node_modules/rxjs';
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
+  categories:Categorie[];
+  CategoriesSubscription:Subscription;
   AddPost:FormGroup;
   AddCategorie:FormGroup;
   loading = false;
   submitted = false;
   valid = false;
+  cat:Categorie;
   constructor(   private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private postService:PostService) { }
+    private postService:PostService,
+    private categorieService:CategorieService   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.getCategories();
   }
 
 
@@ -33,23 +41,42 @@ export class AddPostComponent implements OnInit {
     this.AddPost = this.formBuilder.group({
       title: ['', [Validators.required]],
       content: ['', [Validators.required]]
+  
     });
  }
 
 
 
-
-
+ getCategories()
+ {
+   this.categorieService.emitCategories();
+   this.CategoriesSubscription=this.categorieService.CategoriesSubjet.subscribe(
+     (categorie:Categorie[])=>{
+       this.categories=categorie;
+     
+      
+     }
+   );
+   this.categorieService.emitCategories();
+ }
+ 
+ SelectIdCategorie(idCategorie:String)
+ {
+   console.log(idCategorie);
+   
+  
+ }
 
 
  onSubmit() {
   const title = this.AddPost.get('title').value;
   const content = this.AddPost.get('content').value;
+
   console.log(title);
-  console.log(content);
+  //console.log(this.cat.idCategorie);
   this.submitted = true;
 
-  // stop here if form is invalid
+ // stop here if form is invalid
   if (this.AddPost.invalid) {
       return ;
   }
