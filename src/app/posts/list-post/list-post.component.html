@@ -87,108 +87,7 @@
     </div>
 
 
-
-
-
-    <!-- Modal view -->
-  <div id="ModalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 id="exampleModalLabel" class="modal-title">Show Details Post</h4>
-            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label>Post name</label>
-                <input type="text"  class="form-control">
-              </div>
-              <div class="form-group">       
-                <label>Post description</label>
-                <input type="text"  class="form-control">
-              </div>
-             
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--fin modal  View-->
-
-
-
-
-
-
-      <!-- Modal Update -->
-  <div id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 id="exampleModalLabel" class="modal-title">Update Post</h4>
-            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label>Post title</label>
-                <input type="text"  class="form-control">
-              </div>
-              <div class="form-group">       
-                <label>Post content </label>
-                <input type="text"  class="form-control">
-              </div>
-              <div class="form-group">
-                  <label>Post picture</label>
-                  <input type="file"  class="form-control">
-                </div>
-                <div class="form-group">       
-                  <label>Post video </label>
-                  <input type="file"  class="form-control">
-                </div>
-             
-            </form>
-          </div>
-          <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-success">Update</button>
-            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--fin modal Update-->
-
-
- 
-
-      <!-- Modal Delete -->
-      <div id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-          <div role="document" class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 id="exampleModalLabel" class="modal-title">Delete Post</h4>
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-              </div>
-              <div class="modal-body">
-              <p>Are you ready to delete ?</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" data-dismiss="modal" class="btn btn-danger">Delete</button>
-                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--fin modal Delete-->
-
-
-    
-
-    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Posts</h4>
@@ -229,37 +128,41 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="py-1">
-                      <img src="../../images/faces-clipart/pic-1.png" alt="image" />
+                  <tr *ngFor="let post of posts | paginate: { id: 'listing_pagination',
+                  itemsPerPage: 4,
+                  currentPage: page,
+                  totalItems: totalRec } ">
+                    <td >
+                     {{post.titlePost}}
                     </td>
                     <td>
-                      Herman Beck
+                     {{post.contenuePost}}
                     </td>
                     <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                     {{post.datePost}}
                     </td>
                     <td>
                       $ 77.99
                     </td>
                     <td>
-                        <button data-toggle="modal" data-target="#ModalView" type="button" class="btn btn-primary btn-rounded btn-fw">View</button>
+                        <button (click)=viewPost(post) type="button" class="btn btn-primary btn-rounded btn-fw">View</button>
 
                         </td>
                         <td>
-                        <button  data-toggle="modal" data-target="#ModalUpdate" type="button" class="btn btn-success btn-rounded btn-fw">Update</button>
+                        <button  (click)=updatePost(post)  type="button" class="btn btn-success btn-rounded btn-fw">Update</button>
 
                         </td>
                         <td>
-                        <button data-toggle="modal" data-target="#ModalDelete" type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button>   
+                        <button (click)=deletePost(post.idPost)  type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button>   
 
                         </td>
                   </tr>
               
                 </tbody>
               </table>
+              <div>
+                <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event" class="text-md-right"></pagination-controls>
+              </div>
             </div>
           </div>
         </div>

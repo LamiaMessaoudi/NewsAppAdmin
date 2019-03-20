@@ -20,6 +20,11 @@ export class ListCatComponent implements OnInit {
   CategoriesSubscription:Subscription;
   bsModalRef: BsModalRef;
   
+
+
+  totalRec : number;
+  page: number = 1;
+
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -42,12 +47,13 @@ export class ListCatComponent implements OnInit {
     this.CategoriesSubscription=this.categorieService.CategoriesSubjet.subscribe(
       (categorie:Categorie[])=>{
         this.categories=categorie;
+        this.totalRec = this.categories.length;
        
       }
     );
     this.categorieService.emitCategories();
   }
-  deleteCategorie(idCategorie) {
+  deleteCategorie(idCategorie:String) {
  
     this.bsModalRef = this.bsModalService.show(DeleteCategorieComponent);
     this.bsModalRef.content.idCategorie=idCategorie;

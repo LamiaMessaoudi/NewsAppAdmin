@@ -24,7 +24,10 @@ import { DeleteCategorieComponent } from './categorie/delete-categorie/delete-ca
 import { UpdateCategorieComponent } from './categorie/update-categorie/update-categorie.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { ViewCategorieComponent } from './categorie/view-categorie/view-categorie.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { DeletePostComponent } from './posts/delete-post/delete-post.component';
+import { UpdatePostComponent } from './posts/update-post/update-post.component';
+import { ViewPostComponent } from './posts/view-post/view-post.component';
 
 
 const appRoutes: Routes = [
@@ -57,6 +60,9 @@ const appRoutes: Routes = [
     DeleteCategorieComponent,
     UpdateCategorieComponent,
     ViewCategorieComponent,
+    DeletePostComponent,
+    UpdatePostComponent,
+    ViewPostComponent,
    
    
     
@@ -67,7 +73,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes),
     ModalModule.forRoot()
   ],
@@ -83,7 +89,10 @@ const appRoutes: Routes = [
   entryComponents:[
     DeleteCategorieComponent,
     UpdateCategorieComponent,
-    ViewCategorieComponent
+    ViewCategorieComponent,
+    DeletePostComponent,
+    UpdatePostComponent ,
+    ViewPostComponent
   ]
 })
 export class AppModule { }

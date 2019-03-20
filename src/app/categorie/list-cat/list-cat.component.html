@@ -124,7 +124,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let categorie of categories; let i = index">
+                      <tr *ngFor="let categorie of categories | paginate: { id: 'listing_pagination',
+                      itemsPerPage: 4,
+                      currentPage: page,
+                      totalItems: totalRec } ">
                         <td class="py-1">
                           {{categorie.titleCategorie}}
                         </td>
@@ -140,18 +143,15 @@
 
                         </td>
                         <td>
-                        <button  (click)="deleteCategorie(categorie.idCategorie)" type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button>   
+                        <button  (click)="deleteCategorie(categorie.idCategorie)" type="button" class="btn btn-danger btn-rounded btn-fw text-md-left" >Delete</button>   
 
                         </td>
-                      </tr>
-                     
-                   
-                 
-                    
-                      
-                        
+                      </tr>   
                     </tbody>
                   </table>
+                  <div>
+                    <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event" class="text-md-right"></pagination-controls>
+                  </div>
                 </div>
               </div>
             </div>
