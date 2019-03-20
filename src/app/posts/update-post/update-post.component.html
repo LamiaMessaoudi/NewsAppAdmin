@@ -1,0 +1,35 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 id="exampleModalLabel" class="modal-title">Update Post</h4>
+    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true" (click)="onClose()">×</span></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]=" UpdatePost">
+        <div class="form-group">
+            <label>Post id</label>
+            <input type="text"  class="form-control" formControlName="id" [(ngModel)]="id">
+        </div>
+      <div class="form-group">
+        <label>Post title</label>
+        <input type="text"  class="form-control" formControlName="title" [(ngModel)]="title">
+      </div>
+      <div class="form-group">       
+        <label>Post content </label>
+        <input type="text"  class="form-control" formControlName="content" [(ngModel)]="content">
+      </div>
+      <div class="form-group">
+          <label>Post picture</label>
+          <input type="file"  class="form-control">
+        </div>
+        <div class="form-group">       
+          <label>Post video </label>
+          <input type="file"  class="form-control">
+        </div>
+     
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" data-dismiss="modal" class="btn btn-success"(click)="update()">Update</button>
+    <button type="button" data-dismiss="modal" class="btn btn-secondary" (click)="onClose()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 id="exampleModalLabel" class="modal-title">Delete Post</h4>
+    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true" (click)="onClose()">×</span></button>
+  </div>
+  <div class="modal-body">
+  <p>Are you ready to delete ?</p>
+  <input type="hidden" [(ngModel)]="idPost">
+  </div>
+  <div class="modal-footer">
+      <button type="button" data-dismiss="modal" class="btn btn-danger"(click)="deletePost(idPost)">Delete</button>
+    <button type="button" data-dismiss="modal" class="btn btn-secondary" (click)="onClose()">Close</button>
+  </div>
+</div>

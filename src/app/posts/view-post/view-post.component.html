@@ -1,0 +1,22 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 id="exampleModalLabel" class="modal-title">Show Details Post</h4>
+    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"  (click)="onClose()">×</span></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="ViewPost">
+      <div class="form-group">
+        <label>Post name</label>
+        <input type="text" formControlName="title"  name="title" value="" [(ngModel)]="title" class="form-control">
+      </div>
+      <div class="form-group">       
+        <label>Post description</label>
+        <input type="text" formControlName="content"  name="content" value="" [(ngModel)]="content" class="form-control">
+      </div>
+     
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn btn-secondary"  (click)="onClose()">Close</button>
+  </div>
+</div>
