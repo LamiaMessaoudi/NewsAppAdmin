@@ -10,7 +10,7 @@ export class Post {
 	photoPost :string;
     videoPost : string;
     admin:Admin;
-    categoriePost:Categorie[];
+    categoriePost:Categorie;
     listLike:Like[];
     listComment:Comment[];
     constructor() {

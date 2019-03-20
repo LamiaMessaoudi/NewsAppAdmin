@@ -122,7 +122,7 @@
             <div class="col-md-9">
               <select  class="form-control" (change)="SelectIdCategorie($event.target.value)">
               
-                <option [value]="categorie.idCategorie" *ngFor="let categorie of categories">{{categorie.titleCategorie}}</option>
+                <option [value]="i" *ngFor="let categorie of categories; let i=index">{{categorie.titleCategorie}}</option>
               </select>
             </div>
           </div>

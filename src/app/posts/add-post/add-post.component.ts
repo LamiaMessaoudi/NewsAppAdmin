@@ -60,10 +60,10 @@ export class AddPostComponent implements OnInit {
    this.categorieService.emitCategories();
  }
  
- SelectIdCategorie(idCategorie:String)
+ SelectIdCategorie(idCategorie:number)
  {
    console.log(idCategorie);
-   
+   this.cat=this.categories[idCategorie];
   
  }
 
@@ -72,7 +72,7 @@ export class AddPostComponent implements OnInit {
   const title = this.AddPost.get('title').value;
   const content = this.AddPost.get('content').value;
 
-  console.log(title);
+  console.log(this.cat.titleCategorie);
   //console.log(this.cat.idCategorie);
   this.submitted = true;
 
@@ -85,6 +85,7 @@ export class AddPostComponent implements OnInit {
   let post:Post=new Post();
   post.titlePost=title;
   post.contenuePost=content;
+  post.categoriePost=this.cat;
   const date=new Date();
   var datePipe=new DatePipe('en-US');
   const datecreation=datePipe.transform(date,'dd-MM-yyyy');
