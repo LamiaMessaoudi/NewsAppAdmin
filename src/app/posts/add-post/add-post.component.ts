@@ -9,6 +9,7 @@ import { DatePipe } from '../../../../node_modules/@angular/common';
 import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from '../../Models/Categorie';
 import { Subscription } from '../../../../node_modules/rxjs';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -27,7 +28,9 @@ export class AddPostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private postService:PostService,
-    private categorieService:CategorieService   ) { }
+    private categorieService:CategorieService,
+    private authService: AuthService
+     ) { }
 
   ngOnInit() {
     this.initForm();
@@ -62,8 +65,8 @@ export class AddPostComponent implements OnInit {
  
  SelectIdCategorie(idCategorie:number)
  {
-   console.log(idCategorie);
    this.cat=this.categories[idCategorie];
+
   
  }
 
@@ -71,9 +74,10 @@ export class AddPostComponent implements OnInit {
  onSubmit() {
   const title = this.AddPost.get('title').value;
   const content = this.AddPost.get('content').value;
+  if(this.categories.length<2){
+    this.cat=this.categories[0];
 
-  console.log(this.cat.titleCategorie);
-  //console.log(this.cat.idCategorie);
+  }
   this.submitted = true;
 
  // stop here if form is invalid
@@ -89,17 +93,20 @@ export class AddPostComponent implements OnInit {
   const date=new Date();
   var datePipe=new DatePipe('en-US');
   const datecreation=datePipe.transform(date,'dd-MM-yyyy');
-  console.log(datecreation);
+  post.admin=this.authService.currentAdminValue;
+  post.listComment=[];
+  post.listLike=[];
+  //console.log(datecreation);
   post.datePost=datecreation;
  this.postService.savePost(post)
   .pipe(first())
   .subscribe(
    data=>{
-            console.log("succes");
+            //console.log("succes");
             this.router.navigate(['ListPosts']);
    },
    error=>{
-            console.log("erreur");
+            //console.log("erreur");
             this.loading = false;
             this.valid = true;
    }
