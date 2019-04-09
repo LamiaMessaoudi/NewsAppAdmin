@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   loading = false;
   submitted = false;
   valid = false;
-
+  file:File;
   constructor(private router: Router,
              private authService: AuthService,
               private formBuilder: FormBuilder) { }
@@ -34,35 +34,46 @@ export class SignupComponent implements OnInit {
       FirstName: ['', [Validators.required]],
       LastName: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      file:[]
+      
     });
   }
 
+  selectFile(event)
+  {
+     let reader=new FileReader();
+     if(event.target.files && event.target.files.length>0)
+     {
+        this.file=event.target.files[0];
+        console.log(this.file);
+     }
+  }
   onSubmit() {
     const FirstName = this.signupForm.get('FirstName').value;
     const LastName = this.signupForm.get('LastName').value;
     const username = this.signupForm.get('username').value;
     const password = this.signupForm.get('password').value;
-    console.log(username);
-    console.log(password);
-    console.log(FirstName);
-    console.log(LastName);
+    
     this.submitted = true;
     // stop here if form is invalid
     if (this.signupForm.invalid) {
       return;
     }
     this.loading = true;
-    let admin:Admin=new Admin();
-    admin.nomAdmin=LastName;
-    admin.prenomAdmin=FirstName;
-    admin.emailAdmin=username;
-    admin.passwordAdmin=password;
+    
+    const donn:FormData=new FormData();
   
+  donn.append('image',this.file);
+
+  donn.append("admin",new Blob([JSON.stringify(new Admin(LastName,FirstName,username,password))], {
+       type: "application/json"
+  })
+);
    
 
   
-    this.authService.register(admin)
+    this.authService.register(donn)
       .pipe(first())
       .subscribe(
         data => {

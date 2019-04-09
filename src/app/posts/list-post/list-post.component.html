@@ -142,12 +142,12 @@
                      {{post.datePost}}
                     </td>
                     <td>
-                      <div id="div1"  style="display: inline;position: relative;"   *ngIf="post.photoPost!=null">
-                      <img  src="http://localhost:9999/photoPost/{{post.idPost}}" width="70px" height="30px"></div> <br> <br>
-                      <video id="div1" style="display: inline;position: relative;"   *ngIf="post.videoPost!=null" controls  id="videoPlayer" width="70px" height="10px">
-                        <source src="http://localhost:9999/videoPost/{{post.idPost}}" type="video/mp4" />
-                       
-                      </video>
+                      <div   *ngIf="post.photoPost!=null">
+                      <img  src="http://localhost:9999/photoPost/{{post.idPost}}" width="50px" height="50px"></div> 
+                      <video *ngIf="post.videoPost!=null" controls  id="videoPlayer" width="50px" height="50px">
+                          <source src="http://localhost:9999/videoPost/{{post.idPost}}" type="video/mp4" />
+                         
+                        </video>
                     </td>
                     <td>
                         <button (click)=viewPost(post) type="button" class="btn btn-primary btn-rounded btn-fw">View</button>

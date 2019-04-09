@@ -1,11 +1,15 @@
 export class Admin {
 	idAdmin:String;
 	nomAdmin:String ;
-	prenomAdmin : string;
-	emailAdmin : string;
-	passwordAdmin :string;
-	avatarAdmin : string;
-    constructor() {
+	prenomAdmin : String;
+	emailAdmin : String;
+	passwordAdmin :String;
+	avatarAdmin : String;
+    constructor(nom:String,prenom:String,email:String,password:String) {
+		this.nomAdmin=nom;
+		this.prenomAdmin=prenom;
+		this.emailAdmin=email;
+		this.passwordAdmin=password;
     }
 
 }

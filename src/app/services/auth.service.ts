@@ -20,19 +20,16 @@ export class AuthService {
     public get currentAdminValue(): Admin {
         return this.currentAdminSubject.value;
     }
-    register(admin:Admin)
+    register(donn:FormData)
     {
-        return this.http.post(`http://localhost:9999/registerAdmin`, admin)
+        return this.http.post(`http://localhost:9999/registerAdmin`, donn)
         .pipe(map(admin => {
             // register successful if there's a jwt token in the response
-            if (admin ) {
-                console.log(admin);
+         
     
                 localStorage.setItem('currentAdmin', JSON.stringify(admin));
                 
-            }
-    
-            return admin;
+           
         }));
     }
 

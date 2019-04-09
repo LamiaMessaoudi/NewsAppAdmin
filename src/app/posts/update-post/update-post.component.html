@@ -17,13 +17,22 @@
         <label>Post content </label>
         <input type="text"  class="form-control" formControlName="content" [(ngModel)]="content">
       </div>
+      <div class="form-group">       
+          <label>Post category</label>
+         
+              <select  class="form-control" (change)="SelectIdCategorie($event.target.value)">
+              
+                <option   [value]="i" *ngFor="let categorie of categories; let i=index">{{categorie.titleCategorie}}</option>
+              </select>
+           
+        </div>
       <div class="form-group">
           <label>Post picture</label>
-          <input type="file"  class="form-control">
+          <input type="file"  class="form-control" name="file" id="file2" formControlName="file2" (change)="selectFile2($event)">
         </div>
         <div class="form-group">       
           <label>Post video </label>
-          <input type="file"  class="form-control">
+          <input type="file"  class="form-control"  name="file2" id="file2" formControlName="file2" (change)="selectFile2($event)">
         </div>
      
     </form>

@@ -50,18 +50,15 @@ deletePost(idPost:String)
       this.getAllPosts();
   }));
 }
-updatePost(post:Post,idPost:String)
+updatePost(donn:FormData,idPost:String)
 {
-  return this.httpClient.put('http://localhost:9999/updatePost/'+idPost,post)
-  .pipe(map(post=>{
-    if (post ) {
-      console.log(post);
+  return this.httpClient.put('http://localhost:9999/updatePostt/'+idPost,donn)
+  .pipe(map(res=>{
+   
 
-      this.getAllPosts();
-      
-  }
+ 
   this.getAllPosts();
-  return post;
+  
      
   }));
 }
