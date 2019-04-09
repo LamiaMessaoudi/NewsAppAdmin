@@ -7,13 +7,21 @@
     <form [formGroup]="ViewPost">
       <div class="form-group">
         <label>Post name</label>
+        <input type="hidden" formControlName="id"  name="id" value="" [(ngModel)]="id" class="form-control">
+        <input type="hidden" formControlName="photoPost"  name="photoPost" value="" [(ngModel)]="photoPost" class="form-control">
+        <input type="hidden" formControlName="videoPost"  name="videoPost" value="" [(ngModel)]="videoPost" class="form-control">
         <input type="text" formControlName="title"  name="title" value="" [(ngModel)]="title" class="form-control">
       </div>
       <div class="form-group">       
         <label>Post description</label>
         <input type="text" formControlName="content"  name="content" value="" [(ngModel)]="content" class="form-control">
       </div>
-     
+      <div id="div1"  style="display: inline;position: relative;"  *ngIf="photoPost!=null">
+          <img   src="http://localhost:9999/photoPost/{{id}}" width="400px" height="200px"><br> <br></div>
+          <video *ngIf="videoPost!=null" id="div1" style="display: inline;position: relative;"   controls  id="videoPlayer" width="400px" height="200px">
+            <source src="http://localhost:9999/videoPost/{{id}}" type="video/mp4" />
+           
+          </video>
     </form>
   </div>
   <div class="modal-footer">

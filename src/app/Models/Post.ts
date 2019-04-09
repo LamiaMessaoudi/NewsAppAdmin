@@ -5,15 +5,22 @@ import { Like } from './Like';
 export class Post {
 	idPost:String;
 	titlePost:String ;
-	contenuePost : string;
-	datePost : string;
-	photoPost :string;
-    videoPost : string;
+	contenuePost : String;
+	datePost : String;
+	photoPost :String;
+    videoPost : String;
     admin:Admin;
     categoriePost:Categorie;
     listLike:Like[];
     listComment:Comment[];
-    constructor() {
+    constructor(title:String,contenu:String,datep:String,admin:Admin,categorie:Categorie,likes:Like[],comments:Comment[]) {
+        this.titlePost=title;
+        this.contenuePost=contenu;
+        this.datePost=datep;
+        this.admin=admin;
+        this.categoriePost=categorie
+        this.listLike=likes;
+        this.listComment=comments;
     }
 
 }

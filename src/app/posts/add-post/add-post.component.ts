@@ -24,6 +24,8 @@ export class AddPostComponent implements OnInit {
   submitted = false;
   valid = false;
   cat:Categorie;
+  file1:File;
+  file2:File;
   constructor(   private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -43,12 +45,31 @@ export class AddPostComponent implements OnInit {
   initForm() {
     this.AddPost = this.formBuilder.group({
       title: ['', [Validators.required]],
-      content: ['', [Validators.required]]
+      content: ['', [Validators.required]],
+      file1:[],
+      file2:[]
   
     });
  }
 
-
+ selectFile1(event)
+ {
+    let reader=new FileReader();
+    if(event.target.files && event.target.files.length>0)
+    {
+       this.file1=event.target.files[0];
+       console.log(this.file1);
+    }
+ }
+ selectFile2(event)
+ {
+    let reader=new FileReader();
+    if(event.target.files && event.target.files.length>0)
+    {
+       this.file2=event.target.files[0];
+       console.log(this.file2);
+    }
+ }
 
  getCategories()
  {
@@ -86,19 +107,22 @@ export class AddPostComponent implements OnInit {
   }
 
   this.loading = true;
-  let post:Post=new Post();
-  post.titlePost=title;
-  post.contenuePost=content;
-  post.categoriePost=this.cat;
+ 
   const date=new Date();
   var datePipe=new DatePipe('en-US');
   const datecreation=datePipe.transform(date,'dd-MM-yyyy');
-  post.admin=this.authService.currentAdminValue;
-  post.listComment=[];
-  post.listLike=[];
-  //console.log(datecreation);
-  post.datePost=datecreation;
- this.postService.savePost(post)
+  const admin=this.authService.currentAdminValue;
+ 
+
+  const donn:FormData=new FormData();
+  
+  donn.append('image',this.file1);
+  donn.append('video',this.file2);
+  donn.append("post",new Blob([JSON.stringify(new Post(title,content,datecreation,admin,this.cat,[],[]))], {
+       type: "application/json"
+  })
+);
+ this.postService.savePost(donn)
   .pipe(first())
   .subscribe(
    data=>{

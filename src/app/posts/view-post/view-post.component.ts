@@ -11,6 +11,7 @@ import { ActivatedRoute,Router } from '../../../../node_modules/@angular/router'
 export class ViewPostComponent implements OnInit {
   event: EventEmitter<any> = new EventEmitter();
   ViewPost:FormGroup;
+  id:String;
   constructor(private bsModalRef: BsModalRef ,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -18,13 +19,17 @@ export class ViewPostComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.id=this.ViewPost.get('id').value;
 
   }
   initForm()
 {
   this.ViewPost = this.formBuilder.group({
     title: [{value: '', disabled: true}, [Validators.required]],
-    content: [{value: '', disabled: true}, [Validators.required]]
+    content: [{value: '', disabled: true}, [Validators.required]],
+    photoPost:[],
+    videoPost:[],
+    id:[]
   }); 
 }
 onClose() 

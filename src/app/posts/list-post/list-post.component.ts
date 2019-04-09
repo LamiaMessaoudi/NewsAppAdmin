@@ -73,7 +73,10 @@ export class ListPostComponent implements OnInit {
   viewPost(post:Post)
   {
     this.bsModalRef = this.bsModalService.show(ViewPostComponent);
+    this.bsModalRef.content.id=post.idPost;
     this.bsModalRef.content.title=post.titlePost;
     this.bsModalRef.content.content=post.contenuePost;
+    this.bsModalRef.content.photoPost=post.photoPost;
+    this.bsModalRef.content.videoPost=post.videoPost;
   }  
 }

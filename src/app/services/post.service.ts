@@ -31,19 +31,13 @@ export class PostService {
 
 
 
-  savePost(post:Post)
+  savePost(donn:FormData)
 {
-  return this.httpClient.post(`http://localhost:9999/savePost`, post)
-        .pipe(map(post => {
-            // register successful if there's a jwt token in the response
-            if (post ) {
-                console.log(post);
-    
-                this.getAllPosts();
-                
-            }
+  return this.httpClient.post(`http://localhost:9999/savePost`, donn)
+        .pipe(map(res => {
+         
             this.getAllPosts();
-            return post;
+      
         }));
 }
 
